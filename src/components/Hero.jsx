@@ -1,15 +1,29 @@
-import Spline from '@splinetool/react-spline'
 import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
+  const videoSrc = import.meta.env.VITE_HERO_VIDEO_URL ||
+    'https://videos.pexels.com/video-files/856879/856879-uhd_2560_1440_24fps.mp4'
+
   return (
     <section className="relative min-h-[80vh] grid place-items-center overflow-hidden">
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/41MGRk-UDPKO-l6W/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <video
+          className="w-full h-full object-cover"
+          src={videoSrc}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="https://images.unsplash.com/photo-1565084888279-aca607ecce5f?q=80&w=2069&auto=format&fit=crop"
+        />
       </div>
 
+      {/* Overlay for readability */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0b1020]/70 via-[#0b1020]/40 to-[#0b1020]" />
 
+      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-24 text-center">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-white">
           Premium Asset Management
